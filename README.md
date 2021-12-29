@@ -59,12 +59,12 @@ sudo systemctl daemon-reload
 
 Let’s enable our service so that it doesn’t get disabled if the server restarts.
 ```
-sudo systemctl enable test.service
+sudo systemctl enable deconz-exporter.service
 ```
 
 And now let’s start our service.
 ```
-sudo systemctl start test.service
+sudo systemctl start deconz-exporter.service
 ```
 
 Now our service is up and running.

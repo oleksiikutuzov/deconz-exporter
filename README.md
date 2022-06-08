@@ -6,11 +6,33 @@ Currently only exports battery and Zigbee humidity, temperature, pressure and op
 
 ```
 Enviroment variables used to configure the exporter.
-HOST_PORT       Sets port to expose the prometheus metrics on. default to 80  
-DECONZ_PORT     Sets the port deconz is available on. default to 80  
+HOST_PORT       Sets port to expose the prometheus metrics on. default to 80
+DECONZ_PORT     Sets the port deconz is available on. default to 80
 DECONZ_URL      Sets the url deconz can be reached by. default is 'localhost'
 DECONZ_TOKEN    Sets the token used in the deconz api. default is ''
 UPDATE_INTERVAL Sets interval between updates in seconds, default is 10.0 seconds
+```
+## Run with Docker
+
+Fill in your data to the configuration in the Dockerfile, then build Docker image:
+
+```
+docker build -t deconz-exporter .
+```
+
+Then you can run the image in the background with the following command:
+```
+docker run -d -p HOST_PORT:HOST_PORT --restart unless-stopped deconz-exporter
+```
+
+To check image status:
+```
+docker ps -a
+```
+
+To stop running image:
+```
+docker stop <NAME from prevoius command>
 ```
 
 ## Run with systemd
@@ -69,7 +91,8 @@ sudo systemctl start deconz-exporter.service
 
 Now our service is up and running.
 
-## There are several commands you can do to start, stop, restart, and check status.
+### There are several commands you can do to start, stop, restart, and check status.
+
 To stop the service:
 ```
 sudo systemctl stop name_of_your_service

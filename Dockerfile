@@ -13,10 +13,10 @@ COPY --chown=root:export-user main.py ./main.py
 
 RUN chmod 055 -R /srv/deconz-exporter
 
-ENV HOST_PORT 80
-ENV DECONZ_PORT 80
-ENV DECONZ_URL localhost
-#ENV DECONZ_TOKEN
+ENV HOST_PORT XXXX
+ENV DECONZ_PORT XXXX
+ENV DECONZ_URL XX.XX.XX.XX
+ENV DECONZ_TOKEN XXXXXXXXXX
 ENV UPDATE_INTERVAL 10.0
 
 #HEALTHCHECK --interval=30s --timeout=30s --start-period=5s --retries=3 CMD [ "executable" ]

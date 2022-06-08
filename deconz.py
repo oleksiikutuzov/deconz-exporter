@@ -30,7 +30,7 @@ def _extract_basic_metric(metric, metricName, divider):
 
 
 def _extract_basic_metric_OpenClose(metric, metricName):
-    if metric['state'][metricName] == 'true':
+    if metric['state'][metricName] is True:
         value = 1
     else:
         value = 0

@@ -14,7 +14,7 @@ UPDATE_INTERVAL Sets interval between updates in seconds, default is 10.0 second
 ```
 ## Run with Docker
 
-Fill in your data to the configuration in the Dockerfile, then build Docker image:
+Add your configuration to `env.list.example` file and rename it to `env.list`. Then build Docker image:
 
 ```
 docker build -t deconz-exporter .

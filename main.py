@@ -9,18 +9,18 @@ import signal
 from threading import Event
 
 """
-Enviroment variable lables used to read values from.
-HOST_PORT       Sets port to run the prometheus http server, default to 80  
+Environment variable labels used to read values from.
+HOST_PORT       Sets port to run the prometheus http server, default to 80
 DECONZ_PORT     Sets deconz port, if its not set it will, default to 80
 DECONZ_URL      Sets deconz url, default is 'localhost'
 DECONZ_TOKEN    Sets deconz token, default is ''
 UPDATE_INTERVAL Sets interval between updates in seconds, default is 10.0 seconds
 """
-POST_LABLE = 'HOST_PORT'
-DECONZ_PORT_LABLE = 'DECONZ_PORT'
-URL_LABLE = 'DECONZ_URL'
-TOKEN_LABLE = 'DECONZ_TOKEN'
-TIMEOUT_LABLE = 'UPDATE_INTERVAL'
+POST_LABEL = 'HOST_PORT'
+DECONZ_PORT_LABEL = 'DECONZ_PORT'
+URL_LABEL = 'DECONZ_URL'
+TOKEN_LABEL = 'DECONZ_TOKEN'
+TIMEOUT_LABEL = 'UPDATE_INTERVAL'
 
 exit = Event()
 
@@ -30,27 +30,32 @@ def signalShuttdown(self, *args):
 
 
 config = {
-    'target_port': 80,
-    'host_port': 80,
+    'target_port': 9090,
+    'host_port': 8080,
     'url': 'localhost',
     'token': '',
     'timeout': 10.0
 }
 
-if POST_LABLE in os.environ:
-    config['host_port'] = int(os.environ[POST_LABLE])
+if POST_LABEL in os.environ:
+    config['host_port'] = int(os.environ[POST_LABEL
+                                         ])
 
-if DECONZ_PORT_LABLE in os.environ:
-    config['target_port'] = int(os.environ[DECONZ_PORT_LABLE])
+if DECONZ_PORT_LABEL in os.environ:
+    config['target_port'] = int(os.environ[DECONZ_PORT_LABEL
+                                           ])
 
-if URL_LABLE in os.environ:
-    config['url'] = os.environ[URL_LABLE]
+if URL_LABEL in os.environ:
+    config['url'] = os.environ[URL_LABEL
+                               ]
 
-if TOKEN_LABLE in os.environ:
-    config['token'] = os.environ[TOKEN_LABLE].strip()
+if TOKEN_LABEL in os.environ:
+    config['token'] = os.environ[TOKEN_LABEL
+                                 ].strip()
 
-if TIMEOUT_LABLE in os.environ:
-    config['timeout'] = float(os.environ[TIMEOUT_LABLE])
+if TIMEOUT_LABEL in os.environ:
+    config['timeout'] = float(os.environ[TIMEOUT_LABEL
+                                         ])
 
 
 def create_logger(scope):

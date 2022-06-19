@@ -1,26 +1,10 @@
-FROM python:3-alpine
+FROM python:3
 
-RUN find / -perm +6000 -type f -exec chmod a-s {} \; || true
+WORKDIR /usr/src/app
 
-RUN pip3 install prometheus-client
-RUN apk add --update tini
-RUN adduser --no-create-home -D -s /sbin/nologin export-user
+COPY requirements.txt ./
+RUN pip install --no-cache-dir -r requirements.txt
 
-WORKDIR /srv/deconz-exporter
+COPY . .
 
-COPY --chown=root:export-user deconz.py ./deconz.py
-COPY --chown=root:export-user main.py ./main.py
-
-RUN chmod 055 -R /srv/deconz-exporter
-
-ENV HOST_PORT XXXX
-ENV DECONZ_PORT XXXX
-ENV DECONZ_URL XX.XX.XX.XX
-ENV DECONZ_TOKEN XXXXXXXXXX
-ENV UPDATE_INTERVAL 10.0
-
-#HEALTHCHECK --interval=30s --timeout=30s --start-period=5s --retries=3 CMD [ "executable" ]
-
-USER export-user
-ENTRYPOINT [ "tini", "--" ]
-CMD [ "python3", "/srv/deconz-exporter/main.py" ]
+CMD [ "python", "./main.py" ]

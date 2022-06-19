@@ -2,3 +2,5 @@ __pycache__
 response.json
 test.py
 *.local
+.vscode
+env.list

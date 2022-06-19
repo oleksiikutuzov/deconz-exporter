@@ -5,7 +5,7 @@ A super simple and dirty prometheus exporter for deconz.
 Currently only exports battery and Zigbee humidity, temperature, pressure and open-close sensor.
 
 ```
-Enviroment variables used to configure the exporter.
+Environment variables used to configure the exporter.
 HOST_PORT       Sets port to expose the prometheus metrics on. default to 80
 DECONZ_PORT     Sets the port deconz is available on. default to 80
 DECONZ_URL      Sets the url deconz can be reached by. default is 'localhost'
@@ -22,7 +22,7 @@ docker build -t deconz-exporter .
 
 Then you can run the image in the background with the following command:
 ```
-docker run -d -p HOST_PORT:HOST_PORT --restart unless-stopped deconz-exporter
+docker run -d -p HOST_PORT:9090 --restart unless-stopped --env-file env.list --name deconz-exporter deconz-exporter
 ```
 
 To check image status:
@@ -32,7 +32,17 @@ docker ps -a
 
 To stop running image:
 ```
-docker stop <NAME from prevoius command>
+docker stop deconz-exporter
+```
+
+To start running image:
+```
+docker start deconz-exporter
+```
+
+To delete:
+```
+docker rm deconz-exporter
 ```
 
 ## Run with systemd

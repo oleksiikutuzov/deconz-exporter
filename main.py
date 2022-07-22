@@ -10,7 +10,7 @@ from threading import Event
 
 """
 Environment variable labels used to read values from.
-HOST_PORT       Sets port to run the prometheus http server, default to 80
+HOST_PORT       Sets port to run the prometheus http server, default to 9090
 DECONZ_PORT     Sets deconz port, if its not set it will, default to 80
 DECONZ_URL      Sets deconz url, default is 'localhost'
 DECONZ_TOKEN    Sets deconz token, default is ''

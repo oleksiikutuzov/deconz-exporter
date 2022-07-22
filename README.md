@@ -14,13 +14,7 @@ UPDATE_INTERVAL Sets interval between updates in seconds, default is 10.0 second
 ```
 ## Run with Docker
 
-Add your configuration to `env.list.example` file and rename it to `env.list`. Then build Docker image:
-
-```
-docker build -t deconz-exporter .
-```
-
-Then you can run the image in the background with the following command:
+You can run the image in the background with the following command:
 ```
 docker run -d -p 8090:9090 --restart unless-stopped -e HOST_PORT=9090 -e DECONZ_PORT=80 -e DECONZ_URL=XXXXXX -e DECONZ_TOKEN=XXXXXX -e UPDATE_INTERVAL=10.0 --name deconz-exporter oleksiikutuzov/deconz-exporter
 ```

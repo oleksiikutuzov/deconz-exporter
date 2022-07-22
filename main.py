@@ -31,7 +31,7 @@ def signalShuttdown(self, *args):
 
 config = {
     'target_port': 9090,
-    'host_port': 8080,
+    'host_port': 80,
     'url': 'localhost',
     'token': '',
     'timeout': 10.0

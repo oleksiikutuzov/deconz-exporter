@@ -4,3 +4,4 @@ test.py
 *.local
 .vscode
 env.list
+docker-compose.yml
